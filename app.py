@@ -470,8 +470,8 @@ This data matrix serves as an audit pipeline to isolate key risk entities, congl
         
         sorted_df = metrics_df.sort_values(by=sort_by, ascending=False).reset_index(drop=True)
         
-        # Display pandas dataframe with background gradients
-        st.dataframe(sorted_df.style.background_gradient(subset=[sort_by], cmap="Blues"), use_container_width=True)
+        # FIX: Terhindar dari ImportError matplotlib dengan menggunakan representasi tabel standar yang aman dan berkinerja tinggi
+        st.dataframe(sorted_df, use_container_width=True)
         
         # Export functionality
         csv_data = sorted_df.to_csv(index=False).encode('utf-8')
